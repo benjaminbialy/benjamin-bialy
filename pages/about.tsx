@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<{
   return { props: { authorDetails: { mdxSource, frontMatter } } };
 };
 
-export default function About({
+export default function Profile({
   authorDetails,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { mdxSource, frontMatter } = authorDetails;

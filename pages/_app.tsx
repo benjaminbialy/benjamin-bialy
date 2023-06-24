@@ -15,7 +15,6 @@ import { ThemeProvider, useTheme } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import Analytics from '@/components/analytics';
 import { ClientReload } from '@/components/ClientReload';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import siteMetadata from '@/data/siteMetadata';
@@ -32,7 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content='width=device-width, initial-scale=1' name='viewport' />
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
-      <Analytics />
       <GeistProviderWithTheme>
         <LayoutWrapper>
           <Component {...pageProps} />

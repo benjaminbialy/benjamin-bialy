@@ -1,11 +1,9 @@
 import { Header } from '@/components/Form';
 import StackList from '@/components/list/StackList';
 import { PageSEO } from '@/components/SEO';
-import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { WorkStack } from 'config/stack';
 import Image from 'next/image';
 import { ReactNode } from 'react';
-import { RoughNotation } from 'react-rough-notation';
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter';
 
 interface Props {
@@ -14,8 +12,7 @@ interface Props {
 }
 
 export default function AuthorLayout({ children, frontMatter }: Props) {
-  const { name, avatar, occupation, company, resume } = frontMatter;
-  const [resumeColor] = useRandomColorPair();
+  const { name, avatar, occupation } = frontMatter;
 
   return (
     <>
@@ -37,29 +34,11 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
             <div className='font-medium text-gray-500 dark:text-gray-400'>
               {occupation}
             </div>
-            <div className='text-gray-500 dark:text-gray-400'>{company}</div>
           </div>
 
           <div className='prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2'>
             {children}
             <p className='mt-8'>
-              <a
-                className='!font-normal !text-black !no-underline dark:!text-white'
-                href={resume}
-                target='_blank'
-                rel='noreferrer'
-              >
-                <RoughNotation
-                  show
-                  type='box'
-                  animationDelay={250}
-                  animationDuration={2000}
-                  strokeWidth={2}
-                  color={resumeColor}
-                >
-                  Resume
-                </RoughNotation>
-              </a>
               <h2 className='mt-8 mb-4 text-2xl font-semibold dark:text-white'>
                 Skills
               </h2>

@@ -14,7 +14,6 @@ interface CommonSEOProps {
         '@type': string;
         url: string;
       }[];
-  twImage: string;
   canonicalUrl?: string;
 }
 
@@ -23,7 +22,7 @@ const CommonSEO = ({
   description,
   ogType,
   ogImage,
-  twImage,
+
   canonicalUrl,
 }: CommonSEOProps) => {
   const router = useRouter();
@@ -47,11 +46,7 @@ const CommonSEO = ({
       ) : (
         <meta property='og:image' content={ogImage} key={ogImage} />
       )}
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content={siteMetadata.twitter} />
-      <meta name='twitter:title' content={title} />
-      <meta name='twitter:description' content={description} />
-      <meta name='twitter:image' content={twImage} />
+
       <link
         rel='canonical'
         href={
@@ -73,8 +68,6 @@ interface PageSEOProps {
 export const PageSEO = ({ title, description, imageUrl }: PageSEOProps) => {
   const ogImageUrl =
     siteMetadata.siteUrl + (imageUrl ?? siteMetadata.socialBanner);
-  const twImageUrl =
-    siteMetadata.siteUrl + (imageUrl ?? siteMetadata.socialBanner);
 
   return (
     <CommonSEO
@@ -82,14 +75,12 @@ export const PageSEO = ({ title, description, imageUrl }: PageSEOProps) => {
       description={description}
       ogType='website'
       ogImage={ogImageUrl}
-      twImage={twImageUrl}
     />
   );
 };
 
 export const TagSEO = ({ title, description }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const router = useRouter();
   return (
     <>
@@ -98,7 +89,6 @@ export const TagSEO = ({ title, description }: PageSEOProps) => {
         description={description}
         ogType='website'
         ogImage={ogImageUrl}
-        twImage={twImageUrl}
       />
       <Head>
         <link
@@ -181,8 +171,6 @@ export const BlogSEO = ({
     description: summary,
   };
 
-  const twImageUrl = featuredImages[0].url;
-
   return (
     <>
       <CommonSEO
@@ -190,7 +178,6 @@ export const BlogSEO = ({
         description={summary}
         ogType='article'
         ogImage={featuredImages}
-        twImage={twImageUrl}
         canonicalUrl={canonicalUrl}
       />
       <Head>

@@ -4,10 +4,7 @@ export type AuthorFrontMatter = {
   shortname: string;
   avatar: string;
   occupation: string;
-  company: string;
-  resume: string;
   email: string;
-  twitter: string;
   linkedin: string;
   github: string;
 };

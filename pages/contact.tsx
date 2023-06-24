@@ -3,24 +3,12 @@ import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/data/siteMetadata';
 import { useRandomColorPair } from '@/lib/hooks/useRandomColorPair';
 import { contact } from 'config/contact';
-import { openPopupWidget } from 'react-calendly';
+import Link from 'next/link';
+
 import { RoughNotation } from 'react-rough-notation';
 
 function Contact(): React.ReactElement {
   const [randomColor] = useRandomColorPair();
-
-  function onScheduleMeeting(): void {
-    if (!contact.calendly) {
-      console.error('err: calendly link was not provided.');
-      return;
-    }
-
-    const config = {
-      url: contact.calendly,
-    };
-
-    openPopupWidget(config);
-  }
 
   return (
     <>
@@ -32,13 +20,10 @@ function Contact(): React.ReactElement {
         <Header title='Contact' />
         <div className='container py-12'>
           <p>
-            Do you have a project in mind? Want to hire me? or simply wanna
-            chat? Feel free to
-            <span
+            Like what you see? Feel free to
+            <a
               className='ml-2 cursor-pointer !font-normal !text-black !no-underline dark:!text-white'
-              onClick={onScheduleMeeting}
-              role='button'
-              tabIndex={0}
+              href={contact.links.email}
             >
               <RoughNotation
                 show
@@ -48,9 +33,10 @@ function Contact(): React.ReactElement {
                 animationDuration={2000}
                 color={randomColor}
               >
-                schedule a meeting
+                shoot me an email
               </RoughNotation>
-            </span>
+            </a>{' '}
+            for any and all inquiries.
           </p>
         </div>
       </div>

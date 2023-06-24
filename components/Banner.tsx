@@ -10,12 +10,12 @@ interface BannerProps {
 
 function Banner(props: BannerProps): React.ReactElement {
   const { frontMatter } = props;
-  const [aboutColor, contactColor] = useRandomColorPair();
+  const [aboutMeColour, contactColor] = useRandomColorPair();
 
   return (
     <div className='fade-in banner flex flex-1 flex-col justify-center px-6 py-10 dark:text-white lg:px-10'>
       <h1 className='text-3xl font-bold dark:text-white lg:text-5xl'>
-        Hi, I am {frontMatter.shortname}
+        Hey there, I'm {frontMatter.shortname}.
       </h1>
       <p className='my-2 text-lg lg:my-4 lg:text-2xl'>
         {frontMatter.occupation}
@@ -28,7 +28,7 @@ function Banner(props: BannerProps): React.ReactElement {
             type='highlight'
             animationDelay={250}
             animationDuration={2000}
-            color={aboutColor}
+            color={aboutMeColour}
           >
             about me
           </RoughNotation>
